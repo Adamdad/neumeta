@@ -1,32 +1,50 @@
 # NeuMeta: Neural Metamorphosis
 
-NeuMeta introduces a versatile approach to neural networks, enabling a singular model to dynamically adapt to various tasks and configurations, a concept we call Neural Metamorphosis. This method eliminates the need for multiple models by generating specific network weights on demand. NeuMeta incorporates innovative solutions to maintain consistency and performance, providing a flexible and efficient single-model framework that can adjust in real-time during inference.
+NeuMeta transforms neural networks by allowing a single model to adapt on the fly to different sizes, generating the right weights when needed. It streamlines performance and efficiency, eliminating the need for multiple models and adjusting seamlessly in real-time.
 
-## Code Structure
 
-```
+**Neural Metamorphosis**
+
+ 📝[[Paper](https://arxiv.org/abs/2409.10594)] </>[[code](https://github.com/Adamdad/neumeta)] 
+
+Xingyi Yang, Xinchao Wang
+
+National University of Singapore
+
+![](assets/tiser.png)
+
+
+
+
+
+
+## 🔧 Key Features
+- **Dynamic Model Morphing**: Generate network weights on demand.
+- **Weight Smoothness**: Ensures smooth transitions between weight configurations.
+
+## 🏗️ Code Structure
+
+```shell
 neumeta/
 │
-├── config/ - Configurations for NeuMeta's experimental setups.
-├── models/ - Definitions and variants of the NeuMeta model.
-├── prune/ - Scripts for optimizing models via pruning.
-├── segmentation/ - Semantic segmentation task implementations.
-├── similarity/ - Tools for evaluating model weight similarities.
-├── utils/ - Utility scripts for general purposes.
-├── vae/ - Variational Autoencoder components for NeuMeta.
+├── config/        # Configuration files for experimental setups
+├── models/        # Definitions and variations of NeuMeta models
+├── prune/         # Scripts for model pruning and optimization
+├── segmentation/  # Implementations for semantic segmentation tasks
+├── similarity/    # Tools for evaluating model weight similarities
+├── utils/         # General utility scripts
+├── vae/           # Variational Autoencoder components for NeuMeta
 │
-├── training_scripts/ - Training scripts for different datasets.
-│   └── train_<DATASET>.py - Dataset-specific training scripts.
+├── training_scripts/   # Scripts for dataset-specific training
+│   └── train_<DATASET>.py
 │
-├── hypermodel.py - INR Hypernetwork of NeuMeta.
-│
-├── smoothness/ - Enforces weight smoothness across models.
-│
-└── requirements.txt - Lists necessary packages.
+├── hypermodel.py   # The INR Hypernetwork for NeuMeta
+├── smoothness/     # Enforces smooth weight transitions across models
+└── requirements.txt   # Dependency list
 
 ```
 
-## Getting Started
+## 🚀 Getting Started
 To run the NeuMeta project:
 
 1. **Clone the repository**.
@@ -85,4 +103,15 @@ for hidden_dim in range(16, 65):
 
     # Print the results
     print(f"Test using model {args.model}: hidden_dim {hidden_dim}, Validation Loss: {val_loss:.4f}, Validation Accuracy: {acc*100:.2f}%")        
+```
+
+## 📚 Bibtex
+If you use this repository, please cite:
+```bibtex
+@misc{yang2024neumeta,
+    title={Kolmogorov–Arnold Transformer},
+    author={Xingyi Yang and Xinchao Wang},
+    year={2024},
+    journal={ECCV},
+}
 ```
