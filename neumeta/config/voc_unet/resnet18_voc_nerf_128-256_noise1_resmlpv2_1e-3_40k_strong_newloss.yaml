@@ -1,0 +1,50 @@
+base_config: toy/segmentation/config/unet_r18_voc.yaml
+
+experiment:
+  seed: 42  # Random seed
+  
+# Model configurations
+model:
+  num_classes: 21
+  encoder_name: "resnet18"
+  encoder_weights: "imagenet"
+  in_channels: 3
+  pretrained_path: ./toy/experiments/unet_r18_voc_original_strong/checkpoint.pth.tar
+  
+# Training configurations
+training:
+  strong_aug: True
+  max_iterations: 40000
+  eval_every: 2000
+  log_every: 100
+  scheduler: cosine
+  T_max: 40000
+  learning_rate: 1e-3
+  coordinate_noise: 1.0
+  clip_grad: 5.0
+  checkpoint_dir: toy/experiments/resnet18_voc_nerf_128-256_noise1.0_resmlpv2_1e-3_40k_strong_aug2 # Directory to save the trained model
+
+  
+# Hyper-model specifications (specific to NeRF)
+hyper_model:
+  type: resmlp
+  input_dim: 6
+  hidden_dim: 256
+  num_layers: 4
+  num_freqs: 16
+  output_dim: 9
+  ema_decay: 0.995  # Exponential moving average decay
+  loss_weight:
+    ce_weight: 1.0
+    reg_weight: 0.0
+    recon_weight: 1.0
+    kd_weight: 0.1
+
+# Experiment dimensions configuration
+dimensions:
+  range: [128, 256]  # Dimension range for the experiment
+  interval: 8
+  test: 256  # Testing dimension
+  norm: 256  # Normalization factor
+  start: 256  # Starting dimension
+

@@ -1,0 +1,49 @@
+# Experiment settings
+base_config: toy/experiments/base_config.yaml
+
+experiment:
+  name: celeba_vae_64
+  num_epochs: 50
+  log_interval: 50
+  seed: 42  # Random seed
+
+# Model configurations
+model:
+  type: VAE
+  pretrained_path: toy/vae/vae_samples_celeba_dim64_reg0.01_lr0.002_kl0.0004/celeba_CelebAVAE.pth
+
+# Training configurations
+training:
+  learning_rate: 2e-3
+  scheduler: cosine
+  T_max: 23440
+  batch_size: 128
+  coordinate_noise: 0.0
+  weight_decay: 0.0
+  clip_grad: 5.0
+  save_model_path: toy/experiments/celeba_vae_64/ # Directory to save the trained model
+
+# Hyper-model specifications (specific to NeRF)
+hyper_model:
+  type: resmlp
+  input_dim: 6
+  hidden_dim: 512
+  scalar: 0.1
+  num_layers: 6
+  num_freqs: 16
+  output_dim: 16
+  ema_decay: 0.0  # Exponential moving average decay
+
+  loss_weight:
+    ce_weight: 0.1
+    reg_weight: 0.0
+    recon_weight: 5000.0
+    kd_weight: 0.1
+
+
+# Experiment dimensions configuration
+dimensions:
+  range: [64]  # Dimension range for the experiment
+  test: 64  # Testing dimension
+  norm: 64  # Normalization factor
+  start: 64  # Starting dimension

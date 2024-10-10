@@ -1,0 +1,11 @@
+
+prettytable
+fast-tsp
+torch-pruning
+timm
+omegaconf
+scikit-learn
+wandb
+opencv-python
+albumentations[imgaug]
+segmentation_models_pytorch

@@ -1,0 +1,42 @@
+# Experiment settings
+base_config: toy/experiments/base_config.yaml
+
+experiment:
+  name: mnist_lenet_8-32-noise
+  num_epochs: 50
+  log_interval: 50
+  seed: 42  # Random seed
+
+# Model configurations
+model:
+  type: LeNet
+  pretrained_path: toy/mnist_MnistNet_dim32.pth
+
+# Training configurations
+training:
+  dataset: mnist
+  # scheduler: cosine
+  # T_max: 50
+  learning_rate: 1e-3
+  batch_size: 128
+  coordinate_noise: 1.0
+  weight_decay: 0.0
+  clip_grad: 0.0
+  save_model_path: toy/experiments/mnist_lenet_8-32-noise/ # Directory to save the trained model
+
+# Hyper-model specifications (specific to NeRF)
+hyper_model:
+  type: resmlp
+  input_dim: 6
+  hidden_dim: 256
+  num_layers: 4
+  num_freqs: 16
+  output_dim: 25
+  ema_decay: 0.995  # Exponential moving average decay
+
+# Experiment dimensions configuration
+dimensions:
+  range: [8, 32]  # Dimension range for the experiment
+  test: 32  # Testing dimension
+  norm: 32  # Normalization factor
+  start: 32  # Starting dimension

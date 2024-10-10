@@ -1,0 +1,52 @@
+# Experiment settings
+# Experiment settings
+base_config: toy/experiments/base_config.yaml
+
+experiment:
+  name: ninr_resnet18_imagenet_32-64-5layer-coordnoise-bs256x2-100e_lr2e-3
+  num_epochs: 100
+  log_interval: 100
+  eval_interval: 5
+  seed: 42  # Random seed
+
+# Model configurations
+model:
+  type: ResNet18
+  pretrained_path: None
+  
+data:
+  data_dir: /local_home/dataset/imagenet/
+
+# Training configurations
+training:
+  scheduler: cosine
+  T_max: 100
+  learning_rate: 2e-3
+  batch_size: 256
+  coordinate_noise: 1.0
+  # strong_aug: v1
+  weight_decay: 1e-3
+  clip_grad: 10.0
+  save_model_path: toy/experiments/ninr_resnet18_imagenet_32-64-5layer-coordnoise-bs256x2-100e_lr2e-3 # Directory to save the trained model
+
+# Hyper-model specifications (specific to NeRF)
+hyper_model:
+  type: resmlp
+  input_dim: 6
+  hidden_dim: 256
+  num_layers: 4
+  num_freqs: 16
+  output_dim: 9
+  ema_decay: 0.995  # Exponential moving average decay
+  loss_weight:
+    ce_weight: 1.0
+    reg_weight: 0.0
+    recon_weight: 100.0
+    kd_weight: 0.1
+
+# Experiment dimensions configuration
+dimensions:
+  range: [510,512]  # Dimension range for the experiment
+  test: 512  # Testing dimension
+  norm: 512  # Normalization factor
+  start: 512  # Starting dimension

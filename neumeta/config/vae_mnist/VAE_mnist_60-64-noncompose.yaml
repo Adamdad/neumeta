@@ -1,0 +1,46 @@
+# Experiment settings
+base_config: toy/experiments/base_config.yaml
+
+experiment:
+  name: mnist_vae_32-64
+  num_epochs: 30
+  log_interval: 50
+  seed: 42  # Random seed
+
+# Model configurations
+model:
+  type: VAE
+  pretrained_path: toy/vae/vae_samples_mnist_dim64/mnist_VAE.pth
+
+# Training configurations
+training:
+  learning_rate: 1e-3
+  batch_size: 128
+  coordinate_noise: 1.0
+  weight_decay: 0.0
+  clip_grad: 10.0
+  save_model_path: toy/experiments/mnist_vae_32-64/ # Directory to save the trained model
+
+# Hyper-model specifications (specific to NeRF)
+hyper_model:
+  type: resmlp_nocompose
+  input_dim: 6
+  hidden_dim: 256
+  num_layers: 4
+  num_freqs: 16
+  output_dim: 1
+  ema_decay: 0.995  # Exponential moving average decay
+
+  loss_weight:
+    ce_weight: 0.1
+    reg_weight: 1.0
+    recon_weight: 1.0
+    kd_weight: 0.1
+
+
+# Experiment dimensions configuration
+dimensions:
+  range: [32, 64]  # Dimension range for the experiment
+  test: 64  # Testing dimension
+  norm: 64  # Normalization factor
+  start: 64  # Starting dimension
