@@ -1,4 +1,4 @@
-# NeuMeta: Neural Metamorphosis
+# 🦋 NeuMeta: Neural Metamorphosis 🦋
 
 NeuMeta transforms neural networks by allowing a single model to adapt on the fly to different sizes, generating the right weights when needed. It streamlines performance and efficiency, eliminating the need for multiple models and adjusting seamlessly in real-time.
 
