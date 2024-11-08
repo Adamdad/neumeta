@@ -108,10 +108,12 @@ for hidden_dim in range(16, 65):
 ## 📚 Bibtex
 If you use this repository, please cite:
 ```bibtex
-@misc{yang2024neumeta,
-    title={Kolmogorov–Arnold Transformer},
-    author={Xingyi Yang and Xinchao Wang},
-    year={2024},
-    journal={ECCV},
+@inproceedings{yang2025neural,
+  title={Neural Metamorphosis},
+  author={Yang, Xingyi and Wang, Xinchao},
+  booktitle={European Conference on Computer Vision},
+  pages={1--19},
+  year={2025},
+  organization={Springer}
 }
 ```
